@@ -14,6 +14,12 @@
 #if defined(_MSC_VER) && (_MSC_VER >= 1200)
 # pragma once
 #endif // defined(_MSC_VER) && (_MSC_VER >= 1200)
+/*
+同时使用两者是常见的做法，原因：
+a) #pragma once 提供编译时优化（编译器可以直接跳过已包含的文件）
+b) #ifndef 提供标准兼容性和后备方案（当编译器不支持 #pragma once 时）
+c) 某些特殊情况下（如跨符号链接或不同路径），#pragma once 可能失效，#ifndef 提供额外保护
+ */
 
 #include "asio/detail/config.hpp"
 #include <cstddef>
