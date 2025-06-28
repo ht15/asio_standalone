@@ -938,6 +938,7 @@ private:
 
   io_context* context_ptr() const noexcept
   {
+    // 64位系统 中，指针通常按 8字节对齐（最低3位为 0)，这里利用这个特性对低位做掩码，存储额外信息
     return reinterpret_cast<io_context*>(target_ & ~runtime_bits);
   }
 

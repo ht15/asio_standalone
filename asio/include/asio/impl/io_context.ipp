@@ -55,6 +55,7 @@ io_context::io_context(const execution_context::service_maker& initial_services)
 io_context::impl_type& io_context::add_impl(io_context::impl_type* impl)
 {
   asio::detail::scoped_ptr<impl_type> scoped_impl(impl);
+  // add_service 抛出异常，scoped_ptr 会在栈展开时自动释放 impl，避免内存泄漏
   asio::add_service<impl_type>(*this, scoped_impl.get());
   return *scoped_impl.release();
 }
