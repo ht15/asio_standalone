@@ -372,7 +372,7 @@ const T static_instance<T>::instance = {};
 
 } // namespace asio_require_fn
 namespace asio {
-namespace {
+namespace { // 这里通过匿名命名空间实现了require可以再不同cpp文件中使用且不会导致编译错误
 
 static constexpr const asio_require_fn::impl&
   require = asio_require_fn::static_instance<>::instance;
