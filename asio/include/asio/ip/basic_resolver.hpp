@@ -113,7 +113,7 @@ public:
   explicit basic_resolver(ExecutionContext& context,
       constraint_t<
         is_convertible<ExecutionContext&, execution_context&>::value
-      > = 0)
+      > = 0)   // 第二个参数为未命名的模板参数，仅仅用来做模板约束。如果sfinae失败那么这个构造函数相当于没有
     : impl_(0, 0, context)
   {
   }
