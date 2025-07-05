@@ -12,8 +12,9 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-message(STATUS "source_dir: ${CMAKE_SOURCE_DIR}")
-add_definitions(-DASIO_CUSTOM_HANDLER_TRACKING="${CMAKE_SOURCE_DIR}/src/examples/cpp11/handler_tracking/custom_tracking.hpp")
+message(STATUS "cur source dir: ${CMAKE_SOURCE_DIR}")
+#add_definitions(-DASIO_CUSTOM_HANDLER_TRACKING="${CMAKE_SOURCE_DIR}/src/examples/cpp11/handler_tracking/custom_tracking.hpp")
+add_definitions(-DASIO_ENABLE_HANDLER_TRACKING)
 
 # Platform-specific settings
 if(WIN32)
@@ -28,9 +29,10 @@ if(WIN32)
 elseif(APPLE)
     # macOS specific settings
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    message(STATUS "compile at linux")
     add_compile_options(-pthread)
     list(APPEND LINK_FLAGS -pthread)
-    list(APPEND ASIO_LIBS rt)
+    list(APPEND ASIO_LIBS rt pthread)
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Solaris")
     if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
         add_definitions(-D_PTHREADS)
