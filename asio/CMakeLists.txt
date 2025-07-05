@@ -8,9 +8,12 @@ option(ASIO_ENABLE_BOOST_COROUTINE "Enable Boost.Coroutine support" OFF)
 option(WITH_OPENSSL "Enable OpenSSL support" OFF)
 
 # Set C++ standard based on available features
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+
+message(STATUS "source_dir: ${CMAKE_SOURCE_DIR}")
+add_definitions(-DASIO_CUSTOM_HANDLER_TRACKING="${CMAKE_SOURCE_DIR}/src/examples/cpp11/handler_tracking/custom_tracking.hpp")
 
 # Platform-specific settings
 if(WIN32)
