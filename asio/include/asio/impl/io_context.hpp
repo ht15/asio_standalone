@@ -249,7 +249,7 @@ void io_context::basic_executor_type<Allocator, Bits>::dispatch(
   if (context_ptr()->impl_.can_dispatch())
   {
     // Make a local, non-const copy of the function.
-    function_type tmp(static_cast<Function&&>(f));
+    function_type tmp(static_cast<Function&&>(f)); // 这里static_cast的本质就是 std::forward
 
     detail::fenced_block b(detail::fenced_block::full);
     static_cast<function_type&&>(tmp)();
