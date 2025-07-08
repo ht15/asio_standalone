@@ -58,7 +58,7 @@ using std::declval;
 
 using std::enable_if;
 
-template <bool C, typename T = void>
+template <bool C, typename T = void>  // bool C是非类型模板参数。包括int、bool、char已经对应的指针或者引用 const char*, int&
 using enable_if_t = typename std::enable_if<C, T>::type;
 
 using std::false_type;
