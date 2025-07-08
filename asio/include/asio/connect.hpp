@@ -643,6 +643,7 @@ inline auto async_connect(basic_socket<Protocol, Executor>& s,
         declval<detail::initiate_async_range_connect<Protocol, Executor>>(),
         token, endpoints, declval<detail::default_connect_condition>()))
 {
+  // async_initiate这边包指定了前两个参数类型,剩余参数类型做自动推导
   return async_initiate<RangeConnectToken,
     void (asio::error_code, typename Protocol::endpoint)>(
       detail::initiate_async_range_connect<Protocol, Executor>(s),
