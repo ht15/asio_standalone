@@ -72,7 +72,9 @@ void service_registry::init_key(execution_context::service::key& key,
 
 template <typename Service>
 void service_registry::init_key_from_id(execution_context::service::key& key,
-    const service_id<Service>& /*id*/)
+    const service_id<Service>& /*id*/)    // 这里的service_id<Service>& 是关键，
+                                          // 强行把所有Service类型转换成detail::execution_context_service_base的直接子类
+                                          // 如：detail::execution_context_service_base<config_service>中的config_service
 {
   key.type_info_ = &typeid(typeid_wrapper<Service>);
   key.id_ = 0;
