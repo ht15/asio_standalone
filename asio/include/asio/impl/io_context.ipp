@@ -35,7 +35,7 @@
 namespace asio {
 
 io_context::io_context()
-  : execution_context(config_from_concurrency_hint()),
+  : execution_context(config_from_concurrency_hint()),  // 这里是一个引用执行多态的案例
     impl_(add_impl(new impl_type(*this, false)))
 {
 }
