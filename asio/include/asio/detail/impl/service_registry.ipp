@@ -127,7 +127,7 @@ execution_context::service* service_registry::do_use_service(
   // Create a new service object. The service registry's mutex is not locked
   // at this time to allow for nested calls into this function from the new
   // service's constructor.
-  lock.unlock();
+  lock.unlock();  // 这里解锁防止factory(owner)又调用了do_use_service导致死锁
   auto_service_ptr new_service = { factory(owner) };
   new_service.ptr_->key_ = key;
   lock.lock();
