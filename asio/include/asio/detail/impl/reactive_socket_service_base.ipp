@@ -44,7 +44,7 @@ void reactive_socket_service_base::construct(
 {
   impl.socket_ = invalid_socket;
   impl.state_ = 0;
-  impl.reactor_data_ = reactor::per_descriptor_data();
+  impl.reactor_data_ = reactor::per_descriptor_data(); // 指针的值初始化，相当于nullptr
 }
 
 void reactive_socket_service_base::base_move_construct(
