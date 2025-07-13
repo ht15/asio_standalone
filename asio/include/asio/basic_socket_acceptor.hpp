@@ -1669,7 +1669,7 @@ public:
   {
     return async_initiate<MoveAcceptToken,
       void (asio::error_code, typename Protocol::socket::template
-        rebind_executor<executor_type>::other)>(
+        rebind_executor<executor_type>::other)>(  //这里显式定义的参数类型和模板定义的参数类型顺序不一致，但是模板推导能够处理这种不一致
           initiate_async_move_accept(this), token,
           impl_.get_executor(), static_cast<endpoint_type*>(0),
           static_cast<typename Protocol::socket::template
