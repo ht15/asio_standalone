@@ -914,6 +914,7 @@ public:
 
 private:
   friend class io_context;
+  // 自引用友元：同一模板的不同实例化之间可以互相访问私有成员
   template <typename, uintptr_t> friend class basic_executor_type;
 
   // Constructor used by io_context::get_executor().
