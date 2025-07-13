@@ -498,7 +498,7 @@ struct async_result_memfns_derived
 {
 };
 
-template <typename T, T>
+template <typename T, T>    // 第二个参数是参数T的非类型模板参数。之前提到非类型模板参数可以是int、float、void或他们的指针类型.这里应该就是一个成员函数指针
 struct async_result_memfns_check
 {
 };
